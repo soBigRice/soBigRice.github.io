@@ -11,7 +11,10 @@
   
 ## 工具相关链接地址
 ### 导航页
+国内加速站点
 <a href='https://sobigrice.gitee.io'>https://sobigrice.gitee.io</a>
-### shpBuilder(shp解析生成预览工具)
+海外站点
+<a href='https://sobigrice.github.io'>https://sobigrice.github.io</a>
+### shpBuilder(shp解析生成预览工具)(国内加速站点)
 <a href='https://sobigrice.gitee.io/ShpBuilder'>https://sobigrice.gitee.io/ShpBuilder</a>
 
