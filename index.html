@@ -27,7 +27,14 @@
         </div>
       </div>
     </div>
+
+    <!-- 一个悬浮的div -->
+    <div class="flowContainer">
+      当前网站已经被访问
+      <span id="finicount_views"></span>次
+    </div>
   </body>
+  <script async src="//finicounter.eu.org/finicounter.js"></script>
 
   <script>
     var shadowElement = document.getElementsByClassName("routerContainer");
@@ -117,6 +124,14 @@
       width: 30%;
       height: auto;
       margin: 10px;
+    }
+
+    .flowContainer {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      font-family: "ZiTiGuanJiaBoDian", sans-serif;
+      color: rgb(101, 101, 101);
     }
   </style>
 </html>
