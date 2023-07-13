@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>soBigRicePage</title>
+  </head>
+  <body>
+    <div class="ParentContainer" id="shadow-element">
+      <div>
+        <h1>welcome to SoBigRice's Home</h1>
+      </div>
+
+      <div class="parentRouterContainer">
+        <div class="routerContainer">
+          <a href="./ShpBuilder/index.html">shp文件在线解析</a>
+          <img
+            src="/ShpBuilder/view.png"
+            onclick="location.href='/ShpBuilder/index.html'"
+          />
+        </div>
+      </div>
+      <div class="parentRouterContainer">
+        <div class="routerContainer">
+          <a>更多工具敬请期待。。。</a>
+          <img src="/source/image/wait.png" />
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    var shadowElement = document.getElementById("shadow-element");
+
+    window.addEventListener("mousemove", function (event) {
+      // 根据鼠标位置计算阴影偏移量
+      var offsetX = (event.clientX / shadowElement.offsetWidth - 0.5) * 20;
+      var offsetY = (event.clientY / shadowElement.offsetHeight - 0.5) * 20;
+
+      // 更新阴影样式
+      shadowElement.style.boxShadow =
+        offsetX + "px " + offsetY + "px 10px rgba(0, 0, 0, 0.5)";
+    });
+  </script>
+
+  <style>
+    @font-face {
+      font-family: "RuiZiTaiKongLiXianXiangSuJian";
+      src: url("/source/Front/RuiZiTaiKongLiXianXiangSuJian-Shan/RuiZiTaiKongLiXianXiangSuJian-Shan\(REEJI-TaikoRiskGB-Flash\)-2.ttf")
+        format("truetype");
+    }
+
+    @font-face {
+      font-family: "ZiTiGuanJiaBoDian";
+      src: url("/source/Front/ZiTiGuanJiaBoDian/ZiTiGuanJiaBoDian-2.ttf")
+        format("truetype");
+    }
+
+    h1 {
+      font-family: "RuiZiTaiKongLiXianXiangSuJian", sans-serif;
+    }
+
+    .ParentContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /* font-family: "RuiZiTaiKongLiXianXiangSuJian", sans-serif; */
+      background-image: url("/source/image/RICEBG.png");
+      background-size: cover;
+      background-position: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: underline;
+      /* text-decoration-color: red; */
+      /* text-decoration-style: dotted; */
+      text-decoration-thickness: 2px;
+      cursor: pointer;
+      font-family: "ZiTiGuanJiaBoDian", sans-serif;
+    }
+
+    .parentRouterContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .routerContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      border-radius: 40px;
+      background-color: rgba(114, 109, 87, 0.364);
+      backdrop-filter: blur(5px);
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      width: 30%;
+      height: auto;
+      margin: 10px;
+    }
+  </style>
+</html>
