@@ -10,20 +10,32 @@
       <div>
         <h1>welcome to SoBigRice's Home</h1>
       </div>
-
-      <div class="parentRouterContainer">
-        <div class="routerContainer">
-          <a href="./ShpBuilder">shp文件在线解析</a>
-          <img
-            src="/ShpBuilder/view.png"
-            onclick="location.href='/ShpBuilder/index.html'"
-          />
+      <div class="demoRouterContainer">
+        <div class="parentRouterContainer">
+          <div class="routerContainer">
+            <a href="./twinSpace2DExample">TwinSpace2D引擎演示案例</a>
+            <img
+              src="/twinSpace2DExample/TwinSpace.png"
+              onclick="location.href='/twinSpace2DExample/index.html'"
+            />
+          </div>
+        </div>
+        <div class="parentRouterContainer">
+          <div class="routerContainer">
+            <a href="./ShpBuilder">shp文件在线解析</a>
+            <img
+              src="/ShpBuilder/view.png"
+              onclick="location.href='/ShpBuilder/index.html'"
+            />
+          </div>
         </div>
       </div>
-      <div class="parentRouterContainer">
-        <div class="routerContainer">
-          <a>更多工具敬请期待。。。</a>
-          <img src="/source/image/wait.png" />
+      <div class="demoRouterContainer">
+        <div class="parentRouterContainer">
+          <div class="routerContainer">
+            <a>更多工具敬请期待。。。</a>
+            <img src="/source/image/wait.png" />
+          </div>
         </div>
       </div>
     </div>
@@ -42,9 +54,9 @@
     window.addEventListener("mousemove", function (event) {
       for (let s = 0; s < shadowElement.length; s++) {
         // 根据鼠标位置计算阴影偏移量
-        var offsetX = (event.clientX / shadowElement[s].offsetWidth - 0.5) * 20;
+        var offsetX = (event.clientX / shadowElement[s].offsetWidth - 0.5) * 10;
         var offsetY =
-          (event.clientY / shadowElement[s].offsetHeight - 0.5) * 20;
+          (event.clientY / shadowElement[s].offsetHeight - 0.5) * 10;
 
         offsetX /= 4;
         offsetY /= 4;
@@ -132,6 +144,12 @@
       left: 0%;
       font-family: "ZiTiGuanJiaBoDian", sans-serif;
       color: rgb(101, 101, 101);
+    }
+
+    .demoRouterContainer {
+      display: flex;
+      flex-direction: row;
+      /* height: 60%; */
     }
   </style>
 </html>

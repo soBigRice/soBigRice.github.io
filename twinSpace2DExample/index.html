@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TwinSpace2D_Demo</title>
+    <script type="module" crossorigin src="./assets/main-0db96d99.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-3cfb730f.js">
+  </head>
+  <body>
+    <div class="container">
+      <div><h1>TwinSpace2D-Demo案例展示</h1></div>
+      <div style="display: flex; flex-direction: row; width: 100%; height: 90%">
+        <div class="demoRouterContainer">
+          <div
+            class="demoRouter"
+            onclick="setURLInView('./demo/example1/index.html')"
+          >
+            <div>案例一</div>
+            <img class="routerImage" src="./router/demo1.png" />
+            <a class="router" href="./demo/example1/index.html"
+              >shader鼠标移动</a
+            >
+          </div>
+          <div
+            class="demoRouter"
+            onclick="setURLInView('./demo/example2/index.html')"
+          >
+            <div>案例二</div>
+            <img class="routerImage" src="./router/demo2.png" />
+            <a class="router" href="./demo/example2/index.html"
+              >图片转换法线贴图算法</a
+            >
+          </div>
+          <div
+            class="demoRouter"
+            onclick="setURLInView('./demo/example3/index.html')"
+          >
+            <div>案例三</div>
+            <img class="routerImage" src="./router/demo3.png" />
+            <a class="router" href="./demo/example3/index.html">噪声</a>
+          </div>
+        </div>
+
+        <div id="routerViewContainer"></div>
+      </div>
+    </div>
+    
+  </body>
+
+  <style>
+    .container {
+      display: flex;
+      display: -webkit-flex; /* Safari */
+      flex-direction: column;
+      margin: auto;
+      /* text-align: center; */
+      position: fixed; /* 让元素脱离文档流 */
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0; /* 将元素的边界设置为距离视口的距离 */
+      justify-content: center;
+      align-items: center;
+      background-image: url("background.jpg");
+      background-repeat: round;
+      color: white;
+    }
+
+    .demoRouterContainer {
+      display: flex;
+      flex-direction: column;
+      width: 20%;
+      height: 100%;
+      overflow: auto;
+    }
+
+    #routerViewContainer {
+      width: 80%;
+      height: 100%;
+      position: relative;
+    }
+
+    .demoRouter {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px; /* 设置上、右、下、左都为20px的内边距 */
+      margin: 10px;
+      border: 2px solid rgba(142, 70, 2, 0.647); /* 可选，用于调整边框样式 */
+      /*box-shadow: 2px 2px 4px black; !* 描边效果 *!*/
+      backdrop-filter: blur(20px);
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+    }
+
+    .demoRouter:hover {
+      cursor: pointer;
+    }
+
+    .routerImage {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</html>
