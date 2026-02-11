@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { useGithub } from '../composables/useGithub'
+
+const { profile, loadingProfile, fetchProfile } = useGithub()
+onMounted(fetchProfile)
+</script>
+
 <template>
   <section class="section reveal" style="--delay: 0.05s">
     <div class="section-head">
@@ -27,16 +35,49 @@
         </el-card>
       </el-col>
       <el-col :xs="24" :md="10">
-        <el-card class="glass-card" shadow="never">
-          <p class="eyebrow">订阅更新</p>
-          <h3>每两周一次，分享可操作的灵感</h3>
-          <p class="muted">涵盖写作、设计、产品与独立创作。</p>
-          <div class="subscribe-row">
-            <el-input placeholder="你的邮箱" />
-            <el-button type="primary" round>订阅</el-button>
-          </div>
-          <p class="fine">不会发送垃圾邮件，随时可取消。</p>
-        </el-card>
+        <el-space direction="vertical" :size="16" style="width: 100%">
+          <el-card class="glass-card" shadow="never">
+            <div class="github-card" v-loading="loadingProfile">
+              <div class="github-header">
+                <el-avatar :size="64" :src="profile?.avatar_url" />
+                <div>
+                  <p class="github-name">{{ profile?.name || 'sobigrice' }}</p>
+                  <p class="muted">@{{ profile?.login || 'sobigrice' }}</p>
+                  <p class="muted" v-if="profile?.location">{{ profile.location }}</p>
+                </div>
+                <el-button
+                  type="primary"
+                  plain
+                  round
+                  size="small"
+                  tag="a"
+                  :href="profile?.html_url || 'https://github.com/sobigrice'"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  查看主页
+                </el-button>
+              </div>
+              <p class="github-bio" v-if="profile?.bio">{{ profile.bio }}</p>
+              <div class="github-stats">
+                <span>仓库 {{ profile?.public_repos ?? '—' }}</span>
+                <span>粉丝 {{ profile?.followers ?? '—' }}</span>
+                <span>关注 {{ profile?.following ?? '—' }}</span>
+              </div>
+            </div>
+          </el-card>
+
+          <el-card class="glass-card" shadow="never">
+            <p class="eyebrow">订阅更新</p>
+            <h3>每两周一次，分享可操作的灵感</h3>
+            <p class="muted">涵盖写作、设计、产品与独立创作。</p>
+            <div class="subscribe-row">
+              <el-input placeholder="你的邮箱" />
+              <el-button type="primary" round>订阅</el-button>
+            </div>
+            <p class="fine">不会发送垃圾邮件，随时可取消。</p>
+          </el-card>
+        </el-space>
       </el-col>
     </el-row>
   </section>

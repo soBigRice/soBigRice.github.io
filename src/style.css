@@ -76,7 +76,7 @@ a {
 .page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 28px 24px 48px;
+  padding: 28px 24px 120px;
 }
 
 .page-main {
@@ -161,8 +161,8 @@ a {
 
 .hero {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 24px;
   align-items: center;
 }
 
@@ -184,6 +184,10 @@ a {
   gap: 12px;
   flex-wrap: wrap;
   margin-bottom: 18px;
+}
+
+.hero-side {
+  height: 100%;
 }
 
 .status {
@@ -276,6 +280,18 @@ a {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  position: relative;
+  overflow: hidden;
+  padding: 22px 24px;
+}
+
+.quote-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 122, 61, 0.12), rgba(47, 111, 111, 0.12));
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 .quote-text {
@@ -283,6 +299,8 @@ a {
   font-family: var(--font-display);
   font-size: clamp(20px, 2vw, 28px);
   line-height: 1.6;
+  font-style: italic;
+  letter-spacing: 0.01em;
 }
 
 .quote-meta {
@@ -291,6 +309,10 @@ a {
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+.quote-meta .el-tag {
+  border-color: rgba(0, 0, 0, 0.06);
 }
 
 .gallery-card {
@@ -374,9 +396,72 @@ a {
   font-weight: 600;
 }
 
+.repo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.repo-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.repo-name {
+  margin: 0;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.repo-desc {
+  margin: 0;
+  min-height: 40px;
+}
+
+.repo-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .timeline-title {
   margin: 0 0 6px;
   font-weight: 600;
+}
+
+.github-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.github-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.github-name {
+  margin: 0;
+  font-weight: 700;
+}
+
+.github-bio {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.github-stats {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .subscribe-row {
@@ -387,9 +472,9 @@ a {
 
 .footer-card .el-card__body {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
@@ -397,6 +482,48 @@ a {
   display: flex;
   gap: 16px;
   color: var(--muted);
+  align-items: center;
+  margin-left: auto;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+}
+
+.icon-github {
+  color: #171515;
+}
+
+.icon-mail {
+  color: #ff7a3d;
+}
+
+[data-theme='dark'] .icon-github {
+  color: #f5f2eb;
+}
+
+[data-theme='dark'] .icon-mail {
+  color: #ff9a64;
+}
+.floating-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding: 0 12px;
+  background: transparent;
+}
+
+.floating-footer .glass-card {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .eyebrow {
