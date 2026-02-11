@@ -12,7 +12,13 @@ const loadingQuote = ref(false)
 const fetchQuote = async () => {
   loadingQuote.value = true
   try {
-    const res = await fetch('http://124.223.97.147:8266/', { cache: 'no-store' })
+    const api = 'http://124.223.97.147:8266/'
+    const url =
+      window.location.protocol === 'https:'
+        ? `https://api.allorigins.win/raw?url=${encodeURIComponent(api)}`
+        : api
+
+    const res = await fetch(url, { cache: 'no-store' })
     const raw = await res.text()
     let content = raw
     let from = ''
