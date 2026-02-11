@@ -1,7 +1,38 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { onMounted, ref } from 'vue'
 
 const router = useRouter()
+
+const quote = ref('把平凡的日子过成连续的作品。')
+const author = ref('你的名字')
+const loadingQuote = ref(false)
+
+const fetchQuote = async () => {
+  loadingQuote.value = true
+  try {
+    const res = await fetch('http://124.223.97.147:8266/', { cache: 'no-store' })
+    const raw = await res.text()
+    let content = raw
+    let from = ''
+    try {
+      const data = JSON.parse(raw)
+      content = data.hitokoto || data.text || data.content || raw
+      from = data.from_who || data.from || data.author || ''
+    } catch {
+      // plain text fallback
+    }
+    quote.value = content || '今日无言，保持专注。'
+    author.value = from || '一言'
+  } catch {
+    quote.value = '网络有点忙，稍后再试。'
+    author.value = '系统'
+  } finally {
+    loadingQuote.value = false
+  }
+}
+
+onMounted(fetchQuote)
 </script>
 
 <template>
@@ -65,11 +96,12 @@ const router = useRouter()
         <p class="eyebrow">每日一言</p>
         <h2>把一句话留在今天</h2>
       </div>
+      <el-button :loading="loadingQuote" round size="small" @click="fetchQuote">换一句</el-button>
     </div>
     <el-card class="glass-card quote-card" shadow="never">
-      <p class="quote-text">“把平凡的日子过成连续的作品。”</p>
+      <p class="quote-text">“{{ quote }}”</p>
       <div class="quote-meta">
-        <span class="muted">— 你的名字</span>
+        <span class="muted">— {{ author }}</span>
         <el-tag effect="plain">Daily Quote</el-tag>
       </div>
     </el-card>
